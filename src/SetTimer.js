@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function SetTimer() {
+export default function SetTimer(props) {
   const [minute, setMinute] = useState(0);
   const [hour, setHour] = useState(0);
-  const [totalSec, setTotal] = useState();
 
   const setTimer = () => {
     if (minute > 60 || hour > 24) {
       return alert(
-        "Invalid hour or Minute, /n hour must be around 0-24, minute must be arround 0-60"
+        "Invalid hour or Minute, /n hour must be around 0-24, minute must be arround 1-60"
       );
-    } else {
-      //convert to number
-      const minToSec = minute * 60;
-      const hourToSec = hour * 3600;
-      const totalSecond = hourToSec + minToSec;
-      return setTotal(totalSecond);
     }
+    if (minute === 0 && hour === 0) {
+      return alert("time must not empty");
+    }
+    //convert to number
+    const minToSec = minute * 60;
+    const hourToSec = hour * 3600;
+    const totalSecond = hourToSec + minToSec;
+    return props.getTime(totalSecond);
   };
   return (
-    <div className="bg-gray-400 min-h-screen flex justify-center items-center">
+    <>
       {/* input timer */}
       <section id="input-timer">
         <div className="card-input w-full h-full">
@@ -64,6 +65,6 @@ export default function SetTimer() {
           </button>
         </div>
       </section>
-    </div>
+    </>
   );
 }

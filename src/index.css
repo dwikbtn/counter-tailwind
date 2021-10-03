@@ -11,3 +11,7 @@
 .number-input {
   @apply w-14 h-14 bg-gray-100 font-medium text-lg text-center;
 }
+
+.timer-frame {
+  @apply w-96 h-40 bg-gradient-to-b from-firstGr to-secondGr border-border border-outer rounded-3xl flex flex-row justify-center items-center;
+}

@@ -1,12 +1,29 @@
+import { useState } from "react";
 function App() {
   // create input timer
+  const [minute, setMinute] = useState(0);
+  const [hour, setHour] = useState(0);
+  const [totalSec, setTotal] = useState();
 
+  const setTimer = () => {
+    if (minute > 60 || hour > 24) {
+      return alert(
+        "Invalid hour or Minute, /n hour must be around 0-24, minute must be arround 0-60"
+      );
+    } else {
+      //convert to number
+      const minToSec = minute * 60;
+      const hourToSec = hour * 3600;
+      const totalSecond = hourToSec + minToSec;
+      return setTotal(totalSecond);
+    }
+  };
   return (
     <div className="bg-gray-400 min-h-screen flex justify-center items-center">
       {/* input timer */}
       <section id="input-timer">
         <div className="card-input w-full h-full">
-          <span className="text-sm font-light text-gray-600 my-2">
+          <span className="text-sm font-light text-gray-700 my-2">
             Input time
           </span>
           {/* timer secttion */}
@@ -17,12 +34,12 @@ function App() {
                 <input
                   type="number"
                   className="number-input"
-                  height="50"
-                  width="50"
                   max="23"
                   min="0"
                   name="hour"
                   id="hour"
+                  value={hour}
+                  onChange={(e) => setHour(parseInt(e.target.value))}
                 />
               </label>
             </div>
@@ -32,15 +49,19 @@ function App() {
                 <input
                   type="number"
                   className="number-input"
-                  max="23"
+                  max="60"
                   name="minute"
                   id="minutes"
                   min="0"
+                  onChange={(e) => setMinute(parseInt(e.target.value))}
+                  value={minute}
                 />
               </label>
             </div>
           </div>
-          <button type="submit">Set Timer</button>
+          <button type="submit" onClick={setTimer}>
+            Set Timer
+          </button>
         </div>
       </section>
     </div>

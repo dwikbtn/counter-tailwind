@@ -15,3 +15,7 @@
 .timer-frame {
   @apply w-96 h-40 bg-gradient-to-b from-firstGr to-secondGr border-border border-outer rounded-3xl flex flex-row justify-center items-center;
 }
+
+.inside-timer {
+  @apply w-24 h-20 bg-timerBg flex justify-center items-center text-white mx-2 text-5xl tracking-widest font-inputText bg-gradient-to-b from-gray-900 to-gray-800;
+}

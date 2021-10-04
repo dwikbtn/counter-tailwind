@@ -17,7 +17,10 @@ export default function SetTimer(props) {
     const minToSec = minute * 60;
     const hourToSec = hour * 3600;
     const totalSecond = hourToSec + minToSec;
-    return props.getTime(totalSecond);
+    props.getTime(totalSecond);
+    setMinute(0);
+    setHour(0);
+    return setTimer;
   };
   return (
     <>

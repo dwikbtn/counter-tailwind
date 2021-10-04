@@ -1,24 +1,40 @@
+import { useState } from "react";
 import SetTimer from "./SetTimer";
 function App() {
   // create input timer
+  const [second, setSecond] = useState("00");
+  const [minute, setMinute] = useState("00");
+  const [hour, setHour] = useState("00");
+
   const getTime = (time) => {
-    console.log("time", time);
+    const countDown = setInterval(function () {
+      let hours = parseInt(time / 3600, 10);
+      let minutes = parseInt((time / 60) % 60, 10);
+      let seconds = parseInt(time % 60, 10);
+
+      setSecond(seconds);
+      setMinute(minutes);
+      setHour(hours);
+
+      if (--time < 0) {
+        alert("your time is up");
+        clearInterval(countDown);
+      }
+    }, 1000);
   };
+
   return (
     <>
       <div className="bg-gray-400 min-h-screen flex justify-center items-center flex-col">
         {/* timer start here */}
-        <div id="timer-container" className="text-center mb-4">
-          <div className="timer-frame">
+        <div id="timer-container" className="text-center mb-10 ">
+          <div className="timer-frame shadow-2xl">
             {/* display time */}
 
             {/* inner display */}
-            <div className="w-28 h-20 bg-timerBg flex justify-center items-center text-white">
-              11
-            </div>
-            <div className="w-28 h-20 bg-timerBg flex justify-center items-center text-white ml-3">
-              11
-            </div>
+            <div className="inside-timer">{hour}</div>
+            <div className="inside-timer">{minute}</div>
+            <div className="inside-timer">{second}</div>
           </div>
         </div>
         <SetTimer getTime={getTime} />

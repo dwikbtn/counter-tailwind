@@ -3,8 +3,8 @@ import SetTimer from "./SetTimer";
 function App() {
   // create input timer
   const [second, setSecond] = useState("00");
-  const [minute, setMinute] = useState("00");
-  const [hour, setHour] = useState("00");
+  const [minute, setMinute] = useState("0");
+  const [hour, setHour] = useState("0");
 
   const getTime = (time) => {
     const countDown = setInterval(function () {
@@ -32,8 +32,10 @@ function App() {
             {/* display time */}
 
             {/* inner display */}
-            <div className="inside-timer">{hour}</div>
-            <div className="inside-timer">{minute}</div>
+            <div className="inside-timer">{hour < 10 ? "0" + hour : hour}</div>
+            <div className="inside-timer">
+              {minute < 10 ? "0" + minute : minute}
+            </div>
             <div className="inside-timer">{second}</div>
           </div>
         </div>

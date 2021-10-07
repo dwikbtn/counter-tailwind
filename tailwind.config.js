@@ -12,9 +12,6 @@ module.exports = {
         secondGr: "#F48F32",
         timerBg: "#131514",
       },
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-      },
       borderWidth: {
         outer: "15px",
       },

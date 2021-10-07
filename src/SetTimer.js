@@ -20,7 +20,6 @@ export default function SetTimer(props) {
     props.getTime(totalSecond);
     setMinute(0);
     setHour(0);
-    return setTimer;
   };
   return (
     <>
